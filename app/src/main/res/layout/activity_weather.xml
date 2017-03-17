@@ -10,24 +10,44 @@
         android:id="@+id/bing_pic_img"
         android:scaleType="centerCrop"/>
 
-    <ScrollView
+    <android.support.v4.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/weather_layout"
-        android:scrollbars="none"
-        android:overScrollMode="never">
+        android:id="@+id/drawer_layout">
 
-        <LinearLayout
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:fitsSystemWindows="true">
+            android:layout_height="match_parent"
+            android:id="@+id/swipe_refresh">
 
-            <include layout="@layout/title"/>
-            <include layout="@layout/now" />
-            <include layout="@layout/forecast" />
-            <include layout="@layout/aqi" />
-            <include layout="@layout/suggestion" />
-        </LinearLayout>
-    </ScrollView>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/weather_layout"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:fitsSystemWindows="true">
+
+                    <include layout="@layout/title"/>
+                    <include layout="@layout/now" />
+                    <include layout="@layout/forecast" />
+                    <include layout="@layout/aqi" />
+                    <include layout="@layout/suggestion" />
+                </LinearLayout>
+            </ScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/choose_area_fragment1"
+            android:name="com.example.coolweather.chooseAreaFragment"
+            android:layout_gravity="start"/>
+
+    </android.support.v4.widget.DrawerLayout>
 </FrameLayout>
