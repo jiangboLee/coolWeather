@@ -53,7 +53,7 @@ public class AutoUpdateService extends Service {
             String weatherId = weather.basic.weatherId;
 
             String weatherUrl = "https://free-api.heweather.com/v5/weather?city=" + weatherId +"&key= bff5cc9bcfdf46b0a0e9bf0c260ff14f";
-            HttpUtil.sendOkHttpRequest(weatherId, new Callback() {
+            HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
@@ -84,9 +84,9 @@ public class AutoUpdateService extends Service {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String bingpic = response.body().string();
+                String bingPic = response.body().string();
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
-                editor.putString("bing_pic", bingpic);
+                editor.putString("bing_pic", bingPic);
                 editor.apply();
             }
         });
